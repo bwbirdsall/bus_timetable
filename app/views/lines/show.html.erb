@@ -4,7 +4,15 @@
 
 <ul>
 <% @line.stations.each do |station| %>
-  <li><i><span class="name"><%= @line.name %></span></i> goes through the <b><%= link_to station.name, station_path(station) %></b> station.</li>
+  <li><i><span class="name"><%= @line.name %></span></i> goes through the <b><%= link_to station.name, station_path(station) %></b> station.
+    <ul>
+    <% station.stops.where(:line_id => @line.id).each do | stop |%>
+      <% stop.busstops.each do |busstop| %>
+        <li>Bus: <a href="/buses/<%= busstop.bus.id %>/"><%= busstop.bus.name %></a> at <%= busstop.arrival_time.strftime("%I:%M %P") %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  </li>
 <% end %>
 </ul>
 
