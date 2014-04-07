@@ -1,5 +1,12 @@
-<h1 class="jumbotron"><%= @line.name %></h1>
+<div class="header"><h1><%= @line.name %></h1></div>
 
-<h3>This is the homepage of <i><%= @line.name %></i>!? Thank you for coming!</h3>
-<%= link_to "Delete", line_path(@line), :confirm => "Are you certain?", :method => "delete", :class => "btn btn-danger" %><br><br>
+<h3>Line Route:</h3>
+
+<ul>
+<% @line.stations.each do |station| %>
+  <li><i><span class="name"><%= @line.name %></span></i> goes through the <b><%= station.name %></b> station.</li>
+<% end %>
+</ul>
+
+<br><%= link_to "Cancel this Line", line_path(@line), :confirm => "Are you certain?", :method => "delete", :class => "btn btn-danger" %><br><br>
 <p><%= link_to "Main Lines Page", lines_path, :class => "btn btn-warning" %></p>

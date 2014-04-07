@@ -1,8 +1,10 @@
-<h1 class="jumbotron">STOP, STOP-STOP-STOP.</h1>
+<h1 class="header">STOP, STOP-STOP-STOP.</h1>
 
 <ul>
   <% @stops.each do |stop| %>
-    <li><b>Stop ID <%= stop.id %></b> [ Station: <i><%= stop.station.name %></i> | Line: <i><%= stop.line.name %></i> ]</li>
+    <li><b>Stop ID <%= stop.id %></b> [ Station: <i><%= stop.station.name %></i> | Line: <i><%= stop.line.name %></i><span class="redstuff">
+    [ <%= link_to "X", stop_path(stop), :confirm => "Are you certain?", :method => "delete" %> ]</span>
+    </li>
   <% end %>
 </ul>
 
@@ -23,3 +25,5 @@
   </div>
   <%= f.submit(:class => "btn btn-warning") %>
 <% end %>
+<p><br><%= link_to "Main Stations Page", stations_path, :class => "btn btn-primary" %>
+   <%= link_to "Main Lines Page", lines_path, :class => "btn btn-primary" %></p>

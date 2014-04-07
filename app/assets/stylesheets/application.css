@@ -12,3 +12,44 @@
  *= require_tree .
  *= require 'bootstrap'
  */
+.redstuff a{
+  color: firebrick;
+  font-weight: 600;
+}
+
+.name {
+  color: darkolivegreen;
+  font-weight: 500;
+}
+
+.container {
+  margin-top: 100px;
+  background-color: blanchedalmond;
+  color: #522900;
+  border-radius: 10px;
+}
+
+body {
+  background: url('oronce-fine-map.jpg');
+  background-size: 100%;
+  width: 100%;
+}
+
+
+.header {
+  background: darkgoldenrod;
+  width: 40%;
+  text-align: center;
+  margin: 18px auto;
+  padding-top: 8px;
+  color: #522900;
+  border-radius: 20px;
+  height: 100px;
+  font-weight: 600;
+}
+
+.header h1 {
+  display: inline-block;
+  vertical-align: center;
+  font-weight: 600;
+}
