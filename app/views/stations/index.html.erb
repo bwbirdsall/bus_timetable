@@ -1,0 +1,16 @@
+<h1 class="jumbotron">Wall-to-Wall Stations in Here.</h1>
+
+<ul>
+  <% @stations.each do |station| %>
+    <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+  <% end %>
+</ul>
+
+<h3>Add new station</h3>
+<%= form_for(@station) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit(:class => "btn btn-warning") %>
+<% end %>

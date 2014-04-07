@@ -1,0 +1,16 @@
+<h1 class="jumbotron">All the Lines</h1>
+
+<ul>
+  <% @lines.each do |line| %>
+    <li><a href="/lines/<%= line.id %>"><%= line.name %></a></li>
+  <% end %>
+</ul>
+
+<h3>Add new line</h3>
+<%= form_for(@line) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit(:class => "btn btn-warning") %>
+<% end %>

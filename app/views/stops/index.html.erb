@@ -1,0 +1,25 @@
+<h1 class="jumbotron">STOP, STOP-STOP-STOP.</h1>
+
+<ul>
+  <% @stops.each do |stop| %>
+    <li><b>Stop ID <%= stop.id %></b> [ Station: <i><%= stop.station.name %></i> | Line: <i><%= stop.line.name %></i> ]</li>
+  <% end %>
+</ul>
+
+<h3>Add new Stop</h3>
+<%= form_for(@stop) do |f| %>
+  <div class="form-group">
+
+  </div>
+  <div class="form-group">
+    <% options = [] %>
+    <% Station.all.each {|station| options << [station.name, station.id] } %>
+    <%= f.label :station_id %>
+    <%= f.select(:station_id, options_for_select(options))%><br/>
+    <%= f.label :line_id %>
+    <% options = [] %>
+    <% Line.all.each {|line| options << [line.name, line.id] } %>
+    <%= f.select(:line_id, options_for_select(options))%><br/>
+  </div>
+  <%= f.submit(:class => "btn btn-warning") %>
+<% end %>
