@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407155420) do
+ActiveRecord::Schema.define(version: 20140407204156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buses", force: true do |t|
+    t.string  "name"
+    t.integer "line_id"
+  end
+
+  create_table "busstops", force: true do |t|
+    t.integer "bus_id"
+    t.integer "stop_id"
+    t.time    "arrival_time"
+  end
 
   create_table "lines", force: true do |t|
     t.string "name"

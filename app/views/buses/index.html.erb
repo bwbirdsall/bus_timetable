@@ -1,0 +1,24 @@
+<div class="header"><h1>All the Buses</h1></div>
+
+<ul>
+  <% @buses.each do |bus| %>
+    <li><a href="/buses/<%= bus.id %>"><%= bus.name %></a><span class="redstuff">
+    [ <%= link_to "X", bus_path(bus), :confirm => "Are you certain?", :method => "delete" %> ]</span></li>
+  <% end %>
+</ul>
+
+<h3>Add new bus</h3>
+<%= form_for(@bus) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :line_id %>
+    <% options = [] %>
+    <% Line.all.each {|line| options << [line.name, line.id] } %>
+    <%= f.select(:line_id, options_for_select(options))%><br/>
+  </div>
+  <%= f.submit(:class => "btn btn-warning") %>
+<% end %>
+<p><br><%= link_to "Main Stations Page", stations_path, :class => "btn btn-primary" %>
+  <%= link_to "Main Lines Page", lines_path, :class => "btn btn-primary" %>
+  <%= link_to "Main Stops Page", stops_path, :class => "btn btn-primary" %></p>

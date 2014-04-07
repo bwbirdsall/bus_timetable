@@ -4,7 +4,7 @@
 
 <ul>
 <% @line.stations.each do |station| %>
-  <li><i><span class="name"><%= @line.name %></span></i> goes through the <b><%= station.name %></b> station.</li>
+  <li><i><span class="name"><%= @line.name %></span></i> goes through the <b><%= link_to station.name, station_path(station) %></b> station.</li>
 <% end %>
 </ul>
 

@@ -4,7 +4,7 @@
 
 <ul>
 <% @station.lines.each do |line| %>
-  <li>The <i><span class="name"><%= @station.name %></span></i> station is on the <b><%= line.name %></b> line.</li>
+  <li>The <i><span class="name"><%= @station.name %></span></i> station is on the <b><%= link_to line.name, line_path(line) %></b> line.</li>
 <% end %>
 </ul>
 

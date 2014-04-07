@@ -20,8 +20,11 @@ class LinesController < ApplicationController
 
   def destroy
     @line = Line.find(params[:id])
+    @line.stops.each do |stop|
+      stop.destroy
+    end
     @line.destroy
-    flash[:notice] = "Line deleted."
+    flash[:notice] = "Line, its stops, and its buses deleted."
     redirect_to lines_path
   end
 end

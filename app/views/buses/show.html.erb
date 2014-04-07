@@ -1,0 +1,32 @@
+<div class="header"><h1><%= @bus.name %></h1></div>
+
+<h3>Bus Route:</h3>
+
+<ul>
+<% @bus.busstops.each do |busstop| %>
+  <li><i><span class="name"><%= @bus.name %></span></i> stops at the <b><%= link_to busstop.stop.station.name, station_path(busstop.stop.station) %></b> station at <%= busstop.arrival_time.strftime("%I:%M %P")%>.<span class="redstuff">
+    [ <%= link_to "X", busstop_path(busstop), :confirm => "Are you certain?", :method => "delete" %> ]</span></li>
+<% end %>
+</ul>
+
+<h3>Add new busstop</h3>
+<%= form_for(@bus.busstops.new) do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :bus_id, :value => @bus.id %>
+
+    <%= f.label :stop_id %>
+    <% options = [] %>
+    <% @bus.line.stops.each do |stop| %>
+      <% options << [stop.station.name, stop.id] %>
+    <% end %>
+    <%= f.select(:stop_id, options_for_select(options))%><br/>
+
+    <%= f.label :arrival_time %>
+    <%= f.time_field :arrival_time %>
+  </div>
+
+  <%= f.submit(:class => "btn btn-warning") %>
+<% end %>
+
+<br><%= link_to "Cancel this bus", bus_path(@bus), :confirm => "Are you certain?", :method => "delete", :class => "btn btn-danger" %><br><br>
+<p><%= link_to "Main Buses Page", buses_path, :class => "btn btn-primary" %></p>

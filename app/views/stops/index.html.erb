@@ -2,7 +2,7 @@
 
 <ul>
   <% @stops.each do |stop| %>
-    <li><b>Stop ID <%= stop.id %></b> [ Station: <i><%= stop.station.name %></i> | Line: <i><%= stop.line.name %></i><span class="redstuff">
+    <li><b>Stop ID <span class="name"><%= stop.id %></span></b> [ Station: <i><%= link_to stop.station.name, station_path(stop.station) %></i> | Line: <i><%= link_to stop.line.name, line_path(stop.line) %></i><span class="redstuff">
     [ <%= link_to "X", stop_path(stop), :confirm => "Are you certain?", :method => "delete" %> ]</span>
     </li>
   <% end %>
@@ -26,4 +26,5 @@
   <%= f.submit(:class => "btn btn-warning") %>
 <% end %>
 <p><br><%= link_to "Main Stations Page", stations_path, :class => "btn btn-primary" %>
-   <%= link_to "Main Lines Page", lines_path, :class => "btn btn-primary" %></p>
+       <%= link_to "Main Lines Page", lines_path, :class => "btn btn-primary" %>
+       <%= link_to "Main Buses Page", buses_path, :class => "btn btn-primary" %></p>
